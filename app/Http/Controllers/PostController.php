@@ -31,14 +31,32 @@ class PostController extends Controller
             'content' => 'required|min:10',
             'author' => 'required|min:3'
         ]);
-    
+
         Post::create($request->all());
-    
+
         return redirect()->route('home')->with('success', 'Post creado correctamente');
     }
 
     public function show(Post $post)
     {
         return view('posts.show', compact('post'));
+    }
+
+    public function edit(Post $post)
+    {
+        return view('posts.edit', compact('post'));
+    }
+
+    public function update(Request $request, Post $post)
+    {
+        $request->validate([
+            'title' => 'required|min:3',
+            'content' => 'required|min:10',
+            'author' => 'required|min:3'
+        ]);
+
+        $post->update($request->all());
+
+        return redirect()->route('home')->with('success', 'Post actualizado correctamente');
     }
 }
