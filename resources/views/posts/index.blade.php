@@ -8,6 +8,7 @@
     <ul>
         @foreach ($posts as $post)
             <li><a href="{{ route('posts.show', $post) }}">{{ $post->title }}</a></li>
+            <p class="text-gray-500 text-sm">Autor: {{ $post->author }}</p>
         @endforeach
     </ul>
 @endsection

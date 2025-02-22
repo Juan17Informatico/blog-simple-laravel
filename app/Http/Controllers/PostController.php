@@ -28,11 +28,13 @@ class PostController extends Controller
     {
         $request->validate([
             'title' => 'required|min:3',
-            'content' => 'required|min:10'
+            'content' => 'required|min:10',
+            'author' => 'required|min:3'
         ]);
-
+    
         Post::create($request->all());
-        return redirect()->route('posts.index');
+    
+        return redirect()->route('home')->with('success', 'Post creado correctamente');
     }
 
     public function show(Post $post)

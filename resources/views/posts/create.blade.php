@@ -6,6 +6,7 @@
     <h1>Crear Nuevo Post</h1>
     <form method="POST" action="{{ route('posts.store') }}">
         @csrf
+        <input type="text" name="author" placeholder="Autor" class="border p-2 rounded w-full" required>
         <input type="text" name="title" placeholder="Título" required>
         <textarea name="content" placeholder="Contenido" required></textarea>
         <button type="submit">Guardar</button>
