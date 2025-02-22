@@ -59,4 +59,12 @@ class PostController extends Controller
 
         return redirect()->route('home')->with('success', 'Post actualizado correctamente');
     }
+
+    public function destroy(Post $post)
+    {
+        $post->delete();
+
+        return redirect()->route('home')->with('success', '❌ Post eliminado correctamente.');
+    }
+
 }
